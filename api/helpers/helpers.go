@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func EnforceHTTP() string {
+func EnforceHTTP(url string) string {
 	if url[:4] != "http" {
 		return "http://" + url
 	}
@@ -26,4 +26,5 @@ func RemoveDomainError(url string) bool {
 	if newURL == os.Getenv("DOMAIN") {
 		return false
 	}
+	return true
 }

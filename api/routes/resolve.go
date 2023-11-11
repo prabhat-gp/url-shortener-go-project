@@ -4,7 +4,7 @@ import (
 	"url-shortener-go-project/api/database"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
 )
 
 func ResolveURL(c *fiber.Ctx) error {
@@ -21,7 +21,7 @@ func ResolveURL(c *fiber.Ctx) error {
 	}
 
 	rInr := database.CreateClient(1)
-	defer r.Close()
+	defer rInr.Close()
 
 	_ = rInr.Incr(database.Ctx, "counter")
 
